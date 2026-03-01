@@ -121,7 +121,23 @@ body {
   background: #4b2e2e;
   color: #fff;
   text-align: center;
-  padding: 1.5rem;
+  padding: 2rem 1.5rem;
+}
+
+.footer-links {
+  margin: 1rem 0;
+}
+
+.footer-links a {
+  color: #f8d7da;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .3s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 /* Responsive */
@@ -147,5 +163,120 @@ body {
 
   .nav.active {
     display: flex;
+  }
+}
+
+/* Privacy Policy Page */
+.privacy-hero {
+  background: linear-gradient(rgba(216, 107, 124, .8), rgba(216, 107, 124, .8)),
+    url('https://images.unsplash.com/photo-1606312619070-d48b4c6529cc?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 4rem 2rem;
+  text-align: center;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.privacy-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.privacy-hero p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.privacy-content {
+  padding: 2rem;
+  background: #fffaf6;
+}
+
+.privacy-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.privacy-article {
+  background: #fff;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  line-height: 1.8;
+}
+
+.privacy-article h2 {
+  color: #d16c7c;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.privacy-article h3 {
+  color: #4b2e2e;
+  margin: 1.5rem 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.privacy-article p {
+  margin-bottom: 1rem;
+  color: #4b2e2e;
+}
+
+.privacy-article ul {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.privacy-article li {
+  margin-bottom: 0.8rem;
+  color: #4b2e2e;
+}
+
+.privacy-article a {
+  color: #d16c7c;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.privacy-article a:hover {
+  text-decoration: underline;
+}
+
+.privacy-article.acceptance {
+  background: linear-gradient(135deg, #f8d7da 0%, #fdf1ec 100%);
+  border-left: 4px solid #d16c7c;
+}
+
+.privacy-article.acceptance p {
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+  .privacy-hero h1 {
+    font-size: 2rem;
+  }
+
+  .privacy-hero p {
+    font-size: 0.95rem;
+  }
+
+  .privacy-article {
+    padding: 1.5rem;
+  }
+
+  .privacy-article h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .privacy-content {
+    padding: 1rem;
   }
 }
