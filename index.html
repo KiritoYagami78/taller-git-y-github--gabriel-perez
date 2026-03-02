@@ -5,80 +5,203 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dulce Encanto | Repostería Artesanal</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+  .logo{font-size:1.6rem;font-weight:bold;animation:logoFloat 3s ease-in-out infinite}
+  @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+  .cart-btn{background:#fff;color:#ff6f91;padding:8px 15px;border-radius:8px;margin-left:10px;cursor:pointer;font-weight:bold}
+
+  .fade-up{opacity:0;transform:translateY(40px);transition:all .6s}
+  .fade-up.show{opacity:1;transform:translateY(0)}
+
+  .hero-content{animation:fadeZoom 1s ease}
+  @keyframes fadeZoom{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+ 
+  .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;font-size:28px;padding:15px;border-radius:50%;animation:pulse 2s infinite}
+  @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+
+  .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s}
+  .modal.active{opacity:1;pointer-events:auto}
+  .modal-content{background:white;padding:20px;border-radius:12px;max-width:400px;animation:zoom .4s}
+  @keyframes zoom{from{transform:scale(.7)}to{transform:scale(1)}}
+
+  .insta-feed{position:fixed;right:10px;top:50%;transform:translateY(-50%);width:220px;background:#fff;padding:10px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,.2)}
+  .insta-slider{display:flex;overflow-x:auto;gap:10px}
+  .insta-slider img{width:100px;height:100px;object-fit:cover;border-radius:10px}
+
+  .stock{font-size:0.9rem;color:#666}
+  </style>
+
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">🍰 Dulce Encanto</div>
-    <nav class="nav">
-      <a href="#inicio">Inicio</a>
-      <a href="#productos">Productos</a>
-      <a href="#historia">Nuestra historia</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-    <button class="menu-btn" id="menuBtn">☰</button>
-  </header>
+<header class="header">
+  <div class="logo">🍰 Dulce Encanto</div>
+  <nav class="nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#menu">Nuestros Menús</a>
+    <a href="#historia">Nuestra historia</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSftCBlQOrt92ZLbdpw6Ls69FzaOiQjqUGTb4hUl6YQwMhex2g/viewform?usp=sf_link" target="_blank">Contacto</a>
+    <button class="cart-btn" onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</button>
+  </nav>
+  <button class="menu-btn" id="menuBtn">☰</button>
+</header>
 
-  <!-- Hero -->
-  <section class="hero" id="inicio">
-    <div class="hero-content">
-      <h1>Repostería artesanal hecha con amor</h1>
-      <p>Tortas, cupcakes y dulces personalizados para cada ocasión especial</p>
-      <a href="#productos" class="btn">Ver productos</a>
+<section class="hero fade-up" id="inicio">
+
+  <!-- VIDEO DE FONDO -->
+  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="img/preview.jpg">
+  <source src="video/reposteria.mp4" type="video/mp4">
+</video>
+
+
+  <!-- CAPA OSCURA -->
+  <div class="hero-overlay"></div>
+
+  <!-- CONTENIDO -->
+  <div class="hero-content">
+    <h1>Repostería artesanal hecha con amor</h1>
+    <p>Tortas, cupcakes y dulces personalizados</p>
+    <a href="#menu" class="btn">Ver Menú</a>
+  </div>
+
+</section>
+
+
+<section class="section fade-up" id="menu">
+  <h2>Nuestros Menús</h2>
+  <div class="cards">
+
+    <div class="card" onclick="openModal('Torta Chocolate','Torta premium','15000','img/tortas.jpg')">
+      <img src="img/tortas.jpg">
+      <h3>Torta Chocolate</h3>
+      <div class="price">$15.000</div>
+      <p class="stock" id="stock-Torta Chocolate">Stock: 5</p>
+      <button onclick="event.stopPropagation(); agregar('Torta Chocolate',15000)">Agregar</button>
     </div>
-  </section>
 
-  <!-- Productos -->
-  <section class="section" id="productos">
-    <h2>Nuestras especialidades</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Tortas personalizadas</h3>
-        <img src="/img/tortas.jpg"/>
-        <p>Diseños únicos para cumpleaños, bodas y eventos</p>
-      </div>
-      <div class="card">
-        <h3>Cupcakes</h3>
-        <img src="/img/cupcakes.jpg"/>
-        <p>Sabores clásicos y gourmet con decoración artesanal</p>
-      </div>
-      <div class="card">
-        <h3>Cookies & brownies</h3>
-        <img src="/img/brownies.jpg"/>
-        <p>Recién horneados, suaves y llenos de sabor</p>
-      </div>
+    <div class="card" onclick="openModal('Cupcakes','Pack x6','8000','img/cupcakes.jpg')">
+      <img src="img/cupcakes.jpg">
+      <h3>Cupcakes</h3>
+      <div class="price">$8.000</div>
+      <p class="stock" id="stock-Cupcakes">Stock: 8</p>
+      <button onclick="event.stopPropagation(); agregar('Cupcakes',8000)">Agregar</button>
     </div>
-  </section>
 
-  <!-- Historia -->
-  <section class="section alt" id="historia">
-    <h2>Nuestra historia</h2>
-    <p class="text">
-      Dulce Encanto nace de la pasión por la repostería artesanal, utilizando
-      ingredientes de calidad y recetas caseras que pasan de generación en generación.
-      Cada producto está hecho con dedicación y cariño.
-    </p>
-  </section>
+  </div>
+</section>
 
-  <!-- Contacto -->
-  <section class="section" id="contacto">
-    <h2>Hacé tu pedido</h2>
-    <p>Escribinos y armamos algo dulce para vos 💕</p>
-    <a class="btn whatsapp" href="https://wa.me/5492614689376" target="_blank">
-      📲 Pedir por WhatsApp
-    </a>
-  </section>
+<section class="section alt fade-up" id="historia">
+  <h2>Nuestra historia</h2>
+  <p>Dulce Encanto nace de la pasión por la repostería artesanal...</p>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2026 Dulce Encanto · Repostería Artesanal</p>
-    <div class="footer-links">
-      <a href="politica-de-privacidad.html">Política de Privacidad</a>
-    </div>
-    <p>Seguinos en Instagram @dulceencanto</p>
-  </footer>
+<section class="section fade-up" id="testimonios">
+  <h2>Lo que dicen nuestros clientes</h2>
+  <blockquote>"Increíble calidad"</blockquote>
+</section>
 
-  <script src="script.js"></script>
+<section class="section fade-up" id="contacto">
+  <h2>Hacé tu pedido</h2>
+  <a class="btn whatsapp" href="https://docs.google.com/forms/d/e/1FAIpQLSftCBlQOrt92ZLbdpw6Ls69FzaOiQjqUGTb4hUl6YQwMhex2g/viewform?usp=sf_link" target="_blank">📝 Hacer pedido</a>
+</section>
+
+<div class="insta-feed">
+  <h3>📸 Creaciones</h3>
+  <div class="insta-slider">
+    <img src="/img/torta1.jpg">
+    <img src="/img/torta2.jpg">
+    <img src="/img/torta3.jpg">
+  </div>
+</div>
+
+<div class="modal" id="cartModal">
+  <div class="modal-content">
+    <span onclick="toggleCart()">✖</span>
+    <h3>Carrito</h3>
+    <ul id="carrito"></ul>
+    <p>Total: $<span id="total">0</span></p>
+    <button onclick="pagar()">Pagar</button>
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span onclick="closeModal()">✖</span>
+    <img id="modalImg">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <div id="modalPrice"></div>
+  </div>
+</div>
+
+<a href="https://wa.me/5492614689376" class="whatsapp-float">💬</a>
+
+<script>
+
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.querySelector('.nav');
+menuBtn.onclick=()=>nav.classList.toggle('active');
+
+let carrito=[];
+let stock={"Torta Chocolate":5,"Cupcakes":8};
+
+function agregar(nombre,precio){
+  if(stock[nombre]<=0){alert('Sin stock');return;}
+  stock[nombre]--;
+  carrito.push({nombre,precio});
+  document.getElementById('cartCount').innerText=carrito.length;
+  actualizarStockUI(nombre);
+  renderCarrito();
+}
+
+function actualizarStockUI(nombre){
+  const el=document.getElementById('stock-'+nombre);
+  if(el){
+    el.innerText='Stock: '+stock[nombre];
+    if(stock[nombre]===0){el.innerText='SIN STOCK';el.style.color='red';}
+  }
+}
+
+function renderCarrito(){
+  let total=0;
+  const lista=document.getElementById('carrito');
+  lista.innerHTML='';
+  carrito.forEach(p=>{
+    total+=p.precio;
+    lista.innerHTML+=`<li>${p.nombre} - $${p.precio}</li>`;
+  });
+  document.getElementById('total').innerText=total;
+}
+
+function toggleCart(){
+  document.getElementById('cartModal').classList.toggle('active');
+}
+
+function pagar(){alert('Integrar MercadoPago');}
+
+function openModal(t,d,p,i){
+  modal.classList.add('active');
+  modalTitle.innerText=t;
+  modalDesc.innerText=d;
+  modalPrice.innerText='$'+p;
+  modalImg.src=i;
+}
+
+function closeModal(){modal.classList.remove('active');}
+
+const elements=document.querySelectorAll('.fade-up');
+window.addEventListener('scroll',()=>{
+  elements.forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-100){
+      el.classList.add('show');
+    }
+  });
+});
+
+</script>
+
 </body>
 </html>

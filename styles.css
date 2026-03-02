@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -6,32 +7,37 @@
 }
 
 body {
-  background: #fffaf6;
-  color: #4b2e2e;
   line-height: 1.6;
+  background: #fff8f5;
+  color: #333;
 }
 
-/* Header */
+/* HEADER */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: #f8d7da;
+  padding: 15px 30px;
+  background: #ffb6b9;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .logo {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  color: white;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
 }
 
 .nav a {
-  margin-left: 1rem;
   text-decoration: none;
-  color: #4b2e2e;
+  color: white;
   font-weight: 500;
 }
 
@@ -40,243 +46,880 @@ body {
   font-size: 1.5rem;
   background: none;
   border: none;
-  cursor: pointer;
+  color: white;
 }
 
-/* Hero */
+/* HERO */
 .hero {
+  position: relative;
   height: 80vh;
-  background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)),
-    url('https://images.unsplash.com/photo-1606312619070-d48b4c6529cc?auto=format&fit=crop&w=1600&q=80');
-  background-size: cover;
-  background-position: center;
+  background: url("img/hero.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
+  overflow: hidden;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
+/* Video dentro del hero (opcional) */
+.hero-video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index: -2;
 }
 
-.hero p {
-  margin: 1rem 0;
-  font-size: 1.1rem;
+.hero-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.4);
+  z-index: -1;
 }
 
-/* Sections */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(0,0,0,0.4);
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #ff6f91;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff3d6e;
+}
+
+/* SECCIONES */
 .section {
-  padding: 4rem 2rem;
+  padding: 60px 20px;
   text-align: center;
 }
 
-.section.alt {
-  background: #fdf1ec;
-}
-
 .section h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
   font-size: 2rem;
 }
 
-/* Cards */
+.alt {
+  background: #ffe0e6;
+}
+
+/* CARDS */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  gap: 25px;
 }
 
 .card {
-  background: #fff;
-  padding: 2rem;
+  background: white;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,.1);
-  transition: transform .3s;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .card:hover {
   transform: translateY(-5px);
 }
 
-/* Buttons */
-.btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: .8rem 1.8rem;
-  background: #d16c7c;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: bold;
+/* IMÁGENES UNIFORMES */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-.btn.whatsapp {
+/* TEXTO */
+.card h3 {
+  margin: 15px 0 10px;
+}
+
+.card p {
+  padding: 0 10px;
+  font-size: 0.95rem;
+}
+
+/* TESTIMONIOS */
+blockquote {
+  max-width: 600px;
+  margin: 15px auto;
+  font-style: italic;
+}
+
+/* FORMULARIO */
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+form input,
+form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background: #ff6f91;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+.footer {
+  background: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* WHATSAPP */
+.whatsapp {
   background: #25d366;
 }
 
-/* Footer */
-.footer {
-  background: #4b2e2e;
-  color: #fff;
-  text-align: center;
-  padding: 2rem 1.5rem;
-}
-
-.footer-links {
-  margin: 1rem 0;
-}
-
-.footer-links a {
-  color: #f8d7da;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color .3s;
-}
-
-.footer-links a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .nav {
     display: none;
     flex-direction: column;
-    background: #f8d7da;
     position: absolute;
     top: 60px;
     right: 0;
+    background: #ffb6b9;
     width: 200px;
+    padding: 15px;
   }
 
-  .nav a {
-    padding: 1rem;
-    margin: 0;
+  .nav.active {
+    display: flex;
   }
 
   .menu-btn {
     display: block;
   }
 
-  .nav.active {
-    display: flex;
+  .hero {
+    height: 60vh;
   }
+  .filters button {
+  margin: 5px;
+  padding: 8px 15px;
+  border: none;
+  background: #ff6f91;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-/* Privacy Policy Page */
-.privacy-hero {
-  background: linear-gradient(rgba(216, 107, 124, .8), rgba(216, 107, 124, .8)),
-    url('https://images.unsplash.com/photo-1606312619070-d48b4c6529cc?auto=format&fit=crop&w=1600&q=80');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  padding: 4rem 2rem;
-  text-align: center;
-  min-height: 40vh;
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.galeria img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+#carrito li {
+  list-style: none;
+  margin: 5px 0;
+}
+.insta-feed {
+  margin-top: 30px;
+}
+
+.insta-slider {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 10px;
 }
 
-.privacy-hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.insta-slider img {
+  width: 180px;
+  height: 180px;
+  border-radius: 15px;
+  object-fit: cover;
+  scroll-snap-align: center;
+  transition: 0.4s;
 }
 
-.privacy-hero p {
-  font-size: 1rem;
-  opacity: 0.9;
+.insta-slider img:hover {
+  transform: scale(1.08);
+}
+.stock {
+  font-weight: bold;
+  color: #ff4d6d;
+}
+.insta-slider::-webkit-scrollbar {
+  height: 6px;
 }
 
-.privacy-content {
-  padding: 2rem;
-  background: #fffaf6;
+.insta-slider::-webkit-scrollbar-thumb {
+  background: #ff7aa2;
+  border-radius: 10px;
+}
+/* HERO CON VIDEO */
+.hero{
+  position:relative;
+  height:90vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  text-align:center;
 }
 
-.privacy-container {
-  max-width: 900px;
-  margin: 0 auto;
+/* VIDEO */
+.hero-video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
 }
 
-.privacy-article {
-  background: #fff;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  line-height: 1.8;
+/* OSCURECER VIDEO */
+.hero-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.4);
+  z-index:-1;
 }
 
-.privacy-article h2 {
-  color: #d16c7c;
-  margin-bottom: 1.5rem;
-  font-size: 1.6rem;
+/* TEXTO */
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+/* EFECTO BLUR VIDEO */
+.hero.scrolled .hero-video{
+  filter: blur(5px) brightness(0.7);
+  transform: scale(1.05);
+  transition: all 0.5s ease;
+}
+/* TEXTO TIPO NETFLIX */
+.hero-content h1{
+  font-size:2.5rem;
+  letter-spacing:1px;
+  overflow:hidden;
+  border-right:3px solid white;
+  white-space:nowrap;
+  width:0;
+  animation:typing 2s steps(30,end) forwards, blink .7s infinite;
 }
 
-.privacy-article h3 {
-  color: #4b2e2e;
-  margin: 1.5rem 0 1rem 0;
-  font-size: 1.2rem;
+@keyframes typing{
+  from{width:0}
+  to{width:100%}
 }
 
-.privacy-article p {
-  margin-bottom: 1rem;
-  color: #4b2e2e;
+@keyframes blink{
+  50%{border-color:transparent}
+}
+/* BOTON HERO */
+.hero-cta{
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
 }
 
-.privacy-article ul {
-  margin-left: 2rem;
-  margin-bottom: 1rem;
+.hero-cta a{
+  background:#ff6f91;
+  color:white;
+  padding:12px 25px;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 5px 20px rgba(0,0,0,.3);
+  transition:.3s;
 }
 
-.privacy-article li {
-  margin-bottom: 0.8rem;
-  color: #4b2e2e;
+.hero-cta a:hover{
+  transform:scale(1.1);
 }
-
-.privacy-article a {
-  color: #d16c7c;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.privacy-article a:hover {
-  text-decoration: underline;
-}
-
-.privacy-article.acceptance {
-  background: linear-gradient(135deg, #f8d7da 0%, #fdf1ec 100%);
-  border-left: 4px solid #d16c7c;
-}
-
-.privacy-article.acceptance p {
-  font-weight: 500;
-  font-size: 1.05rem;
-}
-
-@media (max-width: 768px) {
-  .privacy-hero h1 {
-    font-size: 2rem;
+/* MOBILE OPTIMIZADO */
+@media(max-width:768px){
+  .hero{
+    height:70vh;
   }
 
-  .privacy-hero p {
+  .hero-content h1{
+    font-size:1.6rem;
+    animation:none;
+    width:auto;
+    border:none;
+  }
+
+  .hero-cta{
+    bottom:20px;
+  }
+}
+/* HERO POSITION */
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
+/* BOTON FLOTANTE HERO */
+.hero-cta{
+  position:absolute;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+}
+
+.hero-cta a{
+  background:#ff6f91;
+  color:white;
+  padding:12px 25px;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 5px 20px rgba(0,0,0,.3);
+  transition:.3s;
+}
+
+.hero-cta a:hover{
+  transform:scale(1.1);
+}
+/* =========================
+   MOBILE PRO OPTIMIZADO
+========================= */
+@media(max-width:768px){
+
+  /* NAV */
+  .nav{
+    position:absolute;
+    top:70px;
+    right:0;
+    background:#ff6f91;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    display:none;
+  }
+
+  .nav.active{
+    display:flex;
+  }
+
+  .nav a{
+    padding:15px;
+    display:block;
+    width:100%;
+    text-align:center;
+  }
+
+  /* HERO */
+  .hero{
+    height:70vh;
+  }
+
+  .hero-video{
+    object-fit:cover;
+    width:100%;
+    height:100%;
+  }
+
+  .hero-content{
+    padding:0 20px;
+    text-align:center;
+  }
+
+  .hero-content h1{
+    font-size:1.5rem;
+    line-height:1.3;
+  }
+
+  .hero-content p{
+    font-size:1rem;
+  }
+
+  .hero-cta{
+    bottom:15px;
+  }
+
+  /* CARDS */
+  .cards{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .card{
+    width:100%;
+  }
+
+  .card img{
+    height:200px;
+    object-fit:cover;
+  }
+
+  /* INSTAGRAM FEED */
+  .insta-feed{
+    position:static;
+    width:100%;
+    margin-top:20px;
+  }
+
+  .insta-slider{
+    justify-content:center;
+  }
+
+  /* MODAL */
+  .modal-content{
+    width:90%;
+  }
+
+  /* BOTON WHATSAPP */
+  .whatsapp-float{
+    font-size:24px;
+    padding:12px;
+  }
+/* =========================
+   BOTONES ANIMADOS PREMIUM
+========================= */
+
+/* EFECTO BURBUJA */
+.btn, .hero-cta a, .cart-btn, .whatsapp {
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+/* EFECTO HOVER */
+.btn:hover,
+.hero-cta a:hover,
+.cart-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* EFECTO ON CLICK */
+.btn:active,
+.hero-cta a:active {
+  transform: scale(0.95);
+}
+
+/* BRILLO DESLIZANTE */
+.btn::before,
+.hero-cta a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transition: 0.5s;
+}
+
+.btn:hover::before,
+.hero-cta a:hover::before {
+  left: 100%;
+}
+
+/* EFECTO REBOTE */
+@keyframes bounceBtn {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+
+/* BOTON HERO ANIMADO */
+.hero-cta a{
+  animation: bounceBtn 2s infinite;
+}
+/* =========================
+   FIXES GENERALES
+========================= */
+
+/* FIX llave faltante */
+#carrito li {
+  list-style: none;
+  margin: 5px 0;
+}
+
+/* Asegurar que el hero esté por encima del video */
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+/* Asegurar capas */
+.hero-video {
+  z-index: -2;
+}
+
+.hero-overlay {
+  z-index: -1;
+}
+
+.hero-content {
+  z-index: 2;
+  position: relative;
+}
+
+.hero-cta {
+  z-index: 3;
+}
+
+/* =========================
+   BOTON FLOTANTE MEJORADO
+========================= */
+
+.hero-cta {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.hero-cta a {
+  background: #ff6f91;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(0,0,0,.3);
+  transition: 0.3s;
+  display: inline-block;
+}
+
+/* Hover pro */
+.hero-cta a:hover {
+  transform: scale(1.08);
+  background: #ff3d6e;
+}
+
+/* Click */
+.hero-cta a:active {
+  transform: scale(0.95);
+}
+
+/* Animación suave */
+@keyframes floatBtn {
+  0%,100%{transform:translate(-50%,0)}
+  50%{transform:translate(-50%,-8px)}
+}
+
+.hero-cta a {
+  animation: floatBtn 3s ease-in-out infinite;
+}
+
+/* =========================
+   MEJORAS MOBILE PRO
+========================= */
+
+@media (max-width: 768px){
+
+  /* Evitar que el video consuma mucho */
+  .hero-video {
+    display: none;
+  }
+
+  /* Fondo alternativo */
+  .hero {
+    background: url("img/hero.jpg") center/cover no-repeat;
+  }
+
+  /* Texto más legible */
+  .hero-content {
+    padding: 0 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+    animation: none;
+    border: none;
+    width: auto;
+  }
+
+  .hero-content p {
     font-size: 0.95rem;
   }
 
-  .privacy-article {
-    padding: 1.5rem;
+  /* Botón mejor posicionado */
+  .hero-cta {
+    bottom: 15px;
   }
 
-  .privacy-article h2 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
+  .hero-cta a {
+    padding: 12px 22px;
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================
+   MEJORA IMAGENES
+========================= */
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* =========================
+   SCROLL BLUR SUAVE
+========================= */
+
+.hero.scrolled .hero-video {
+  filter: blur(6px) brightness(0.6);
+  transform: scale(1.1);
+  transition: all 0.5s ease;
+}
+  /* =========================
+    FIX ERRORES CRITICOS
+  ========================= */
+
+/* FIX carrito */
+#carrito li {
+  list-style: none;
+  margin: 5px 0;
+}
+
+/* =========================
+   ARREGLO GENERAL HERO
+========================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.hero-overlay {
+  z-index: -1;
+}
+
+.hero-content {
+  z-index: 2;
+  position: relative;
+}
+
+/* =========================
+   BOTON HERO PREMIUM
+========================= */
+
+.hero-cta {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+/* BOTON */
+.hero-cta a {
+  background: linear-gradient(45deg,#ff6f91,#ff3d6e);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 40px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(0,0,0,.3);
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+.hero-cta a:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,.4);
+}
+
+/* CLICK */
+.hero-cta a:active {
+  transform: scale(0.95);
+}
+
+/* ANIMACION FLOTANTE */
+@keyframes floatBtn {
+  0%,100%{transform:translate(-50%,0)}
+  50%{transform:translate(-50%,-8px)}
+}
+
+.hero-cta {
+  animation: floatBtn 3s ease-in-out infinite;
+}
+
+/* =========================
+   BOTONES PRO (TODOS)
+========================= */
+
+.btn, .hero-cta a, .cart-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* EFECTO BRILLO */
+.btn::before,
+.hero-cta a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transition: 0.5s;
+}
+
+.btn:hover::before,
+.hero-cta a:hover::before {
+  left: 100%;
+}
+
+/* =========================
+   MOBILE PRO REAL
+========================= */
+
+@media (max-width: 768px){
+
+  /* NAV FULL WIDTH */
+  .nav {
+    width: 100%;
+    right: 0;
+    top: 60px;
   }
 
-  .privacy-content {
-    padding: 1rem;
+  /* HERO OPTIMIZADO */
+  .hero {
+    height: 65vh;
+    background: url("img/hero.jpg") center/cover no-repeat;
   }
+
+  /* APAGA VIDEO EN MOBILE */
+  .hero-video {
+    display: none;
+  }
+
+  /* TEXTO */
+  .hero-content {
+    padding: 0 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    animation: none;
+    border: none;
+    width: auto;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  /* BOTON */
+  .hero-cta {
+    bottom: 15px;
+  }
+
+  .hero-cta a {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  /* CARDS MOBILE */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card img {
+    height: 200px;
+  }
+
+  /* INSTAGRAM */
+  .insta-feed {
+    position: static;
+    width: 100%;
+  }
+
+  /* WHATSAPP */
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    font-size: 22px;
+    padding: 12px;
+  }
+
+}
+
+/* =========================
+   ANIMACION SCROLL HERO
+========================= */
+
+.hero.scrolled .hero-video {
+  filter: blur(6px) brightness(0.6);
+  transform: scale(1.1);
+  transition: all 0.5s ease;
 }
